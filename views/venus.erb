@@ -1,0 +1,44 @@
+<div style="background-color: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: calc(100vh - 20px);">
+  <div style="background-color: #ffffff; padding: 20px 40px 40px; border-radius: 10px; font-family: sans-serif;">
+    <h1>Venus Fund</h1>
+    <h3>2017</h3>
+    <div style="padding-bottom: 12px;"><b>Initial Investments</b></div>
+    <form action="/venus" method="post">
+      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 10px;">
+        <label for="investor1_working_capital">Investor 1</label>
+        <input type="number" id="investor1_working_capital" name="investor1_working_capital" value="<%= investors[0][:working_capital] %>">
+        <label for="investor2_working_capital">Investor 2</label>
+        <input type="number" id="investor2_working_capital" name="investor2_working_capital" value="<%= investors[1][:working_capital] %>">
+        <label for="investor3_working_capital">Investor 3</label>
+        <input type="number" id="investor3_working_capital" name="investor3_working_capital" value="<%= investors[2][:working_capital] %>">
+        <div>
+          <button type="submit">Update</button>
+        </div>
+      </div>
+    </form>
+    <h3>2018</h3>
+    <div style="padding-bottom: 12px;">Purchase $250K worth of BTC on 1-15-18 @ $13767.30/coin</div>
+    <h3>2019</h3>
+    <div style="padding-bottom: 12px;">2 Investors Join with $100K each</div>
+    <div style="padding-bottom: 12px;">
+      Purchase $150K worth of ETH on 1-15-19 @ $129.17/coin
+      <br />
+      Purchase $100K worth of TSLA on 5-17-19 @ $14.37/share
+    </div>
+    <h4>2020</h4>
+    <div style="padding-bottom: 12px;">
+      <i>On 2-10-20</i>
+      <br />
+      Investor 1 withdraws full account
+      <br />
+      Investor 2 withdraws 50&percnt; of account
+      <br />
+      <p>Investor 1 takes $<%= investor1_take %></p>
+      <p>Investor 1 GP takes $<%= investor1_gp_take %></p>
+      <p>Investor 2 takes $<%= investor2_take %></p>
+      <p>Investor 2 GP takes $<%= investor2_gp_take %></p>
+    <div style="padding-top: 50px;">
+      <a href="/">Go to Jupiter Fund</a>
+    </div>
+  </div>
+</div>

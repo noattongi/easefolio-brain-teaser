@@ -1,0 +1,39 @@
+<div style="background-color: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: calc(100vh - 20px);">
+  <div style="background-color: #ffffff; padding: 20px 40px 40px; border-radius: 10px; font-family: sans-serif;">
+    <h1>Jupiter Fund</h1>
+    <form action="/" method="post">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <label for="capital">Capital</label>
+        <input type="number" step="1000" id="capital" name="capital" value="<%= capital %>">
+        <label for="rate">Projected Yearly Return</label>
+        <select id="rate" name="rate">
+          <option value="0.10" <%= selected_rate == 0.10 ? 'selected' : '' %>>risk-free (10&percnt;)</option>
+          <option value="0.15" <%= selected_rate == 0.15 ? 'selected' : '' %>>base (15&percnt;)</option>
+          <option value="0.21" <%= selected_rate == 0.21 ? 'selected' : '' %>>bull (21&percnt;)</option>
+          <option value="0.09" <%= selected_rate == 0.09 ? 'selected' : '' %>>bear (9&percnt;)</option>
+        </select>
+        <label for="years">Years</label>
+        <input type="number" id="years" name="years" value="<%= years %>">
+        <label for="num_of_investors">Investors</label>
+        <input type="number" id="num_of_investors" name="num_of_investors" value="<%= num_of_investors %>">
+        <button style="align-self: flex-end;" type="submit">Calculate</button>
+      </div>
+    </form>
+    <h2>Returns after <%= years %> years</h2>
+    <p>Nominal profit: $<%= nominal_profit %></p>
+    <p>Real profit: $<%= real_profit %></p>
+    <p>Real profit adjusted for inflation (3&percnt;): $<%= real_profit_adjusted_for_inflation %></p>
+
+    <h2>Projected MOICs over <%= years %> years</h2>
+    <p>Bull: <%= bull_moic %>x</p>
+    <p>Base: <%= base_moic %>x</p>
+    <p>Bear: <%= bear_moic %>x</p>
+
+    <h2>After $500M acquisition</h2>
+    <p>Investor take: $<%= investor_take %></p>
+    <p>GP take: $<%= gp_take %></p>
+    <div style="padding-top: 50px;">
+      <a href="/venus">Go to Venus Fund</a>
+    </div>
+  </div>
+</div>

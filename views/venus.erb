@@ -1,5 +1,5 @@
-<div style="background-color: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: calc(100vh - 20px);">
-  <div style="background-color: #ffffff; padding: 20px 40px 40px; border-radius: 10px; font-family: sans-serif;">
+<div style="background-color: #f0f0f0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+  <div style="background-color: #ffffff; padding: 20px 40px 40px; border-radius: 10px; font-family: sans-serif; margin: 40px 0;">
     <h1>Venus Fund</h1>
     <h3>2017</h3>
     <div style="padding-bottom: 12px;"><b>Initial Investments</b></div>
@@ -25,7 +25,7 @@
       <br />
       Purchase $100K worth of TSLA on 5-17-19 @ $14.37/share
     </div>
-    <h4>2020</h4>
+    <h3>2020</h3>
     <div style="padding-bottom: 12px;">
       <i>On 2-10-20</i>
       <br />
@@ -33,10 +33,19 @@
       <br />
       Investor 2 withdraws 50&percnt; of account
       <br />
-      <p>Investor 1 takes $<%= investor1_take %></p>
-      <p>Investor 1 GP takes $<%= investor1_gp_take %></p>
-      <p>Investor 2 takes $<%= investor2_take %></p>
-      <p>Investor 2 GP takes $<%= investor2_gp_take %></p>
+      <p>
+        <i>Prices on 2-10-20:</i>
+        <br />
+        BTC: $<%= asset_prices_2_10_20[0][:price] %>
+        <br />
+        ETH: $<%= asset_prices_2_10_20[1][:price] %>
+        <br />
+        TSLA: $<%= asset_prices_2_10_20[2][:price] %>
+      </p>
+      <p>Investor 1 takes <span style="color: green;"><%= investor1_take %></span></p>
+      <p>Investor 1 GP takes <span style="color: green;"><%= investor1_gp_take %></span></p>
+      <p>Investor 2 takes <span style="color: green;"><%= investor2_take %></span></p>
+      <p>Investor 2 GP takes <span style="color: green;"><%= investor2_gp_take %></span></p>
     <div style="padding-top: 50px;">
       <a href="/">Go to Jupiter Fund</a>
     </div>

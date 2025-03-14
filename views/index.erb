@@ -20,9 +20,9 @@
       </div>
     </form>
     <h2>Returns after <%= years %> years</h2>
-    <p>Nominal profit: $<%= nominal_profit %></p>
-    <p>Real profit: $<%= real_profit %></p>
-    <p>Real profit adjusted for inflation (3&percnt;): $<%= real_profit_adjusted_for_inflation %></p>
+    <p>Nominal profit: <span style="color: green;">$<%= nominal_profit %></span></p>
+    <p>Real profit: <span style="color: green;">$<%= real_profit %></span></p>
+    <p>Real profit adjusted for inflation (3&percnt;): <span style="color: green;">$<%= real_profit_adjusted_for_inflation %></span></p>
 
     <h2>Projected MOICs over <%= years %> years</h2>
     <p>Bull: <%= bull_moic %>x</p>
@@ -30,8 +30,8 @@
     <p>Bear: <%= bear_moic %>x</p>
 
     <h2>After $500M acquisition</h2>
-    <p>Investor take: $<%= investor_take %></p>
-    <p>GP take: $<%= gp_take %></p>
+    <p>Investor take: $<%= investor_take %> / <%= num_of_investors %> investors = <span style="color: green;">$<%= (investor_take / num_of_investors).round(2) %></span></p>
+    <p>GP take: <span style="color: green;">$<%= gp_take %></span></p>
     <div style="padding-top: 50px;">
       <a href="/venus">Go to Venus Fund</a>
     </div>

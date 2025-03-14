@@ -55,21 +55,20 @@ get '/' do
   #hurdle 1
   hurdle1 = @capital * 1.8
 
-  if hurdle1 > remaining
+  #take the rest of remaining if its less than hurdle1
+  if remaining < hurdle1
     @investor_take = @investor_take + remaining
     remaining = 0.00
-  else
+  else #otherwise take full hurdle1 amount
     @investor_take = @investor_take + hurdle1
     remaining = remaining - hurdle1
   end
-  puts "remaining after hurdle 1: #{remaining}"
 
   #hurdle 2
   unless remaining <= 0.00
     #calculate how much in this tranche
     hurdle2 = @capital * 2.7
     hurdle2_tranche = hurdle2 - hurdle1
-    puts "hurdle2_tranche: #{hurdle2_tranche}"
     #GP fee is 20% over the first hurdle
     if hurdle2_tranche > remaining
       @gp_take = @gp_take + (remaining * 0.20)
@@ -80,13 +79,13 @@ get '/' do
       @investor_take = @investor_take + (hurdle2_tranche * 0.80)
       remaining = remaining - hurdle2_tranche
     end
-    puts "remaining after hurdle 2: #{remaining}"
   end
 
   #GP fee is 30% over the second hurdle
   gp_fees_hurdle2 = remaining * 0.30
   remaining = remaining - gp_fees_hurdle2
   @gp_take = @gp_take + gp_fees_hurdle2
+
   #remaining to investors
   @investor_take = @investor_take + remaining
 
@@ -190,7 +189,6 @@ get '/venus' do
       working_capital: params[:investor3_working_capital].to_f || 100000.00,
     },
   ]
-  venus_cash = 300000.00
 
   #2018
   #Purchase $250K worth of BTC on 1-15-18 @ $13767.30
@@ -202,7 +200,6 @@ get '/venus' do
     price: 13767.30,
     amount: 18.16,
   }
-  venus_cash -= venus_position_1[:value]
   venus_positions << venus_position_1
 
   #2019
@@ -215,7 +212,6 @@ get '/venus' do
     id: 5,
     working_capital: 100000.00,
   }
-  venus_cash += 200000.00
 
   #Purchase $150K worth of ETH on 1-15-19 @ $129.17 & $100K worth of TSLA on 5-17-19 @ $14.37
   venus_position_2 = {
@@ -234,9 +230,7 @@ get '/venus' do
     price: 14.37,
     amount: 6958.94,
   }
-  venus_cash -= venus_position_2[:value]
   venus_positions << venus_position_2
-  venus_cash -= venus_position_3[:value]
   venus_positions << venus_position_3
 
   #2020
@@ -272,6 +266,7 @@ get '/venus' do
     investors: investors,
     venus_positions: venus_positions,
     venus_nav: venus_nav,
+    asset_prices_2_10_20: asset_prices_2_10_20,
     investor1_take: investor1_take.round(2),
     investor1_gp_take: investor1_gp_take.round(2),
     investor2_take: investor2_take.round(2),

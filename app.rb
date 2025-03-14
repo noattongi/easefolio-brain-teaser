@@ -86,7 +86,7 @@ get '/' do
   remaining = remaining - gp_fees_hurdle2
   @gp_take = @gp_take + gp_fees_hurdle2
 
-  #remaining to investors
+  #remaining to investors after gp take
   @investor_take = @investor_take + remaining
 
   erb :index, locals: {

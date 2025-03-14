@@ -1,1 +1,1 @@
-web: bundle exec puma -p 5000
+web: bundle exec puma -b unix:///var/run/puma/my_app.sock -p 5000

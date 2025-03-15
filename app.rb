@@ -178,15 +178,15 @@ get '/venus' do
   investors = [
     {
       id: 1,
-      working_capital: params[:investor1_working_capital].to_f || 100000.00,
+      working_capital: params[:investor1_working_capital] ? params[:investor1_working_capital].to_f : 100000.00,
     },
     {
       id: 2,
-      working_capital: params[:investor2_working_capital].to_f || 100000.00,
+      working_capital: params[:investor2_working_capital] ? params[:investor2_working_capital].to_f : 100000.00,
     },
     {
       id: 3,
-      working_capital: params[:investor3_working_capital].to_f || 100000.00,
+      working_capital: params[:investor3_working_capital] ? params[:investor3_working_capital].to_f : 100000.00,
     },
   ]
 
